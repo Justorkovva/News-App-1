@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.oc.rss.fake.FakeNews;
 import com.oc.rss.fake.FakeNewsList;
 import java.util.List;
+import android.app.Activity;
+
+import static justor.newsapp1.R.id.webView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 private Context context;
@@ -48,6 +51,7 @@ private Context context;
 
         private final TextView title;
         //private final TextView htmlcontent;
+        public String htmlContent;
 
         private FakeNews currentPair;
 
@@ -60,8 +64,9 @@ private Context context;
                 @Override
                 public void onClick(View view) {
                     Intent myIntent = new Intent(context,Web.class);
-
+                    myIntent.putExtra("htmlContent",htmlContent);
                     context.startActivity(myIntent);
+                   // webView.loadData(htmlContent, "text/html; charset=UTF-8", null);
 
                 }
             });
@@ -70,6 +75,7 @@ private Context context;
         public void display(FakeNews fake) {
             currentPair = fake;
             title.setText(fake.title);
+            htmlContent=fake.htmlContent;
            // htmlcontent.setText(fake.htmlContent);
         }
     }
