@@ -1,7 +1,5 @@
 package justor.newsapp1;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -12,16 +10,10 @@ import android.widget.TextView;
 import com.oc.rss.fake.FakeNews;
 import com.oc.rss.fake.FakeNewsList;
 import java.util.List;
-import android.app.Activity;
-
-import static justor.newsapp1.R.id.webView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 private Context context;
 
-    public MyAdapter() {
-
-    }
     public MyAdapter(Context context) {
         this.context=context;
     }
@@ -38,7 +30,6 @@ private Context context;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.list_cell, parent, false);
         return new MyViewHolder(view);
-
     }
 
     @Override
@@ -50,11 +41,8 @@ private Context context;
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView title;
-        //private final TextView htmlcontent;
         public String htmlContent;
         public String nav_title;
-
-        private FakeNews currentPair;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
@@ -68,19 +56,14 @@ private Context context;
                     myIntent.putExtra("htmlContent",htmlContent);
                     myIntent.putExtra("title",nav_title);
                     context.startActivity(myIntent);
-                   // webView.loadData(htmlContent, "text/html; charset=UTF-8", null);
-
                 }
             });
         }
 
         public void display(FakeNews fake) {
-            currentPair = fake;
             title.setText(fake.title);
             htmlContent=fake.htmlContent;
             nav_title=fake.title;
-           // htmlcontent.setText(fake.htmlContent);
         }
     }
-
 }
