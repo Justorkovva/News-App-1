@@ -2,17 +2,14 @@ package justor.newsapp1;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.oc.rss.fake.FakeNews;
 import com.oc.rss.fake.FakeNewsList;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -40,16 +37,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView name;
-        private final TextView description;
+        private final TextView title;
+        //private final TextView htmlcontent;
 
         private FakeNews currentPair;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
 
-            name = ((TextView) itemView.findViewById(R.id.name));
-            description = ((TextView) itemView.findViewById(R.id.description));
+            title = ((TextView) itemView.findViewById(R.id.title));
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -58,14 +54,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                             .setTitle(currentPair.title)
                             .setMessage(currentPair.htmlContent)
                             .show();
+
                 }
             });
         }
 
         public void display(FakeNews fake) {
             currentPair = fake;
-            name.setText(fake.title);
-            description.setText(fake.htmlContent);
+            title.setText(fake.title);
+           // htmlcontent.setText(fake.htmlContent);
         }
     }
 
