@@ -52,6 +52,7 @@ private Context context;
         private final TextView title;
         //private final TextView htmlcontent;
         public String htmlContent;
+        public String nav_title;
 
         private FakeNews currentPair;
 
@@ -65,6 +66,7 @@ private Context context;
                 public void onClick(View view) {
                     Intent myIntent = new Intent(context,Web.class);
                     myIntent.putExtra("htmlContent",htmlContent);
+                    myIntent.putExtra("title",nav_title);
                     context.startActivity(myIntent);
                    // webView.loadData(htmlContent, "text/html; charset=UTF-8", null);
 
@@ -76,6 +78,7 @@ private Context context;
             currentPair = fake;
             title.setText(fake.title);
             htmlContent=fake.htmlContent;
+            nav_title=fake.title;
            // htmlcontent.setText(fake.htmlContent);
         }
     }
