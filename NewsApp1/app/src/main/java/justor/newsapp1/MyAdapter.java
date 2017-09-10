@@ -2,6 +2,7 @@ package justor.newsapp1;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,14 @@ import com.oc.rss.fake.FakeNewsList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+private Context context;
+
+    public MyAdapter() {
+
+    }
+    public MyAdapter(Context context) {
+        this.context=context;
+    }
 
     List<FakeNews> list = FakeNewsList.all;
 
@@ -50,10 +59,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new AlertDialog.Builder(itemView.getContext())
-                            .setTitle(currentPair.title)
-                            .setMessage(currentPair.htmlContent)
-                            .show();
+                    Intent myIntent = new Intent(context,Web.class);
+
+                    context.startActivity(myIntent);
 
                 }
             });

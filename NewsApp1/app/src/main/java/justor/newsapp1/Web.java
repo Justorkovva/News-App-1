@@ -14,7 +14,7 @@ public class Web extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.web);
 
-        WebView webView = (WebView) findViewById(R.id.webView);
+       // WebView webView = (WebView) findViewById(R.id.webView);
        // webView.loadData(htmlContent, "text/html; charset=UTF-8", null);
 
 }}
